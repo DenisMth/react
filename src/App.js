@@ -1,25 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import { createElement,  useState } from 'react';
 
-function App() {
+
+function DisplayFrame() {
+  const [showIframe, setShowIframe] = useState(false);
+
+  const handleClick = () => {
+    setShowIframe(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class="frameDiv">
+      {showIframe ? (
+        <iframe src='./index.html' class="frame"></iframe>
+      ) : (
+        <button class="frameButton" onClick={handleClick}>Hello</button>
+      )}
     </div>
   );
-}
+};
 
-export default App;
+export default function Gallery() {
+  return (
+    <section class="window">
+      <h1>Test Iframeception et React</h1>
+      <DisplayFrame />
+    </section>
+  );
+}
